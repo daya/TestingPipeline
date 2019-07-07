@@ -1,5 +1,5 @@
 pipeline {
-  // agent { docker { image 'ruby:2.6.1' } }
+  agent { docker { image 'iamdaya/ruby:2.4.1-apline-rubyracer' } }
   stages {
     stage('requirements') {
       steps {
