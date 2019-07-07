@@ -22,7 +22,7 @@ pipeline {
     stage('deploy') {
       steps {
         // sh 'rake'
-        sh 'this is test deploy stage'
+        sh 'this is test deploy stage.'
       }   
     }
   }
