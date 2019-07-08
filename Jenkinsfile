@@ -26,19 +26,10 @@ pipeline {
     }
     checkpoint 'testing-complete' 
     stage('approve') {
-      mail body: "Approval needed for '${env.JOB_NAME}' at ${env.BUILD_URL}, subject: "${env.JOB_NAME} Approval", to: "daya+jenkins_approval_test@caringly.io" timeout(time: 7, unit: 'DAYS') { input message: 'Do you want to deploy?', parameters: [string(defaultValue: '', description: 'Provide any comments regarding decision.', name: 'Comments')], submitter: 'daya_test' } 
-      input {
-          message "Should the changes be deployed to production?"
-          ok "Yes"
-          submitter "daya_test"
-          submitterParameter "APPROVER"
-          parameters {
-              string(name: 'PERSON', defaultValue: 'Mr Approver', description: 'Would you approve?')
-          }
-      }
-      steps {
-          echo "Hello, ${PERSON}, nice to meet you."
-      }            
+      mail body: "Approval needed for '${env.JOB_NAME}' at ${env.BUILD_URL}, subject: "${env.JOB_NAME} Approval", to: "daya+jenkins_approval_test@caringly.io" 
+      timeout(time: 7, unit: 'DAYS') { 
+        input message: 'Do you want to deploy?', parameters: [string(defaultValue: '', description: 'Provide any comments regarding decision.', name: 'Comments')], submitter: 'daya_test' 
+      } 
     } 
     // stage('approval') {
     //   input {
