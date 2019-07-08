@@ -27,9 +27,9 @@ pipeline {
     // checkpoint 'testing-complete' 
     stage('approve') {
       steps {
-        mail body: "Approval needed for '${env.JOB_NAME}' at ${env.BUILD_URL}", subject: "${env.JOB_NAME} Approval", to: "daya+jenkins_approval_test@caringly.io" 
+        mail body: "Approval needed for '${env.JOB_NAME}' at ${env.BUILD_URL}", subject: "${env.JOB_NAME} Approval", to: "vivek@caringly.io" 
         timeout(time: 7, unit: 'DAYS') { 
-          input message: 'Do you want to deploy?', parameters: [string(defaultValue: '', description: 'Provide any comments regarding decision.', name: 'Comments')], submitter: 'daya_test' 
+          input message: 'Do you want to deploy?', parameters: [string(defaultValue: '', description: 'Provide any comments regarding your decision.', name: 'Comments')], submitter: 'vivek,daya' 
         } 
       }
     } 
