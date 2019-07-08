@@ -24,6 +24,20 @@ pipeline {
         sh 'echo this is test stage'
       }   
     }
+    stage('approval') {
+      input {
+          message "Should the changes be deployed to production?"
+          ok "Yes"
+          submitter "daya_test"
+          submitterParameter "APPROVER"
+          parameters {
+              string(name: 'TestDaya', defaultValue: 'Mr Approver', description: 'Would you approve?')
+          }
+      }
+      steps {
+          echo "Hello, ${PERSON}, nice to meet you."
+      }      
+    }
     stage('deploy') {
       steps {
         // sh 'rake'
