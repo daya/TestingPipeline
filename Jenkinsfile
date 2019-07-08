@@ -31,7 +31,7 @@ pipeline {
           submitter "daya_test"
           submitterParameter "APPROVER"
           parameters {
-              string(name: 'TestDaya', defaultValue: 'Mr Approver', description: 'Would you approve?')
+              string(name: 'PERSON', defaultValue: 'Mr Approver', description: 'Would you approve?')
           }
       }
       steps {
