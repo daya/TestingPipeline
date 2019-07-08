@@ -24,7 +24,7 @@ pipeline {
         sh 'echo this is test stage'
       }   
     }
-    checkpoint 'testing-complete' 
+    // checkpoint 'testing-complete' 
     stage('approve') {
       steps {
         mail body: "Approval needed for '${env.JOB_NAME}' at ${env.BUILD_URL}", subject: "${env.JOB_NAME} Approval", to: "daya+jenkins_approval_test@caringly.io" 
