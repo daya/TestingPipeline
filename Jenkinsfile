@@ -1,5 +1,10 @@
 pipeline {
-  agent { docker { image 'iamdaya/ruby:2.4.1-apline-rubyracer' } }
+  agent { 
+    docker { 
+      label 'slave-docker'
+      image 'iamdaya/ruby:2.4.1-apline-rubyracer' 
+    } 
+  }
   stages {
     stage('requirements') {
       steps {
